@@ -13,8 +13,8 @@ const ListingSchema = new Schema({
   },
   image: {
     type: String,
-    default: "",
-    set: (v) => (v === "" ? "" : v),
+    default: "https://unsplash.com/photos/a-stone-building-with-a-stone-wall-and-trees-around-it-dDFLiUgpdx0",
+    set: (v) => (v === "" ? "https://unsplash.com/photos/a-stone-building-with-a-stone-wall-and-trees-around-it-dDFLiUgpdx0" : v),
   },
   price: {
     type: Number,

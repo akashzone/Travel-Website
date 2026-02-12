@@ -12,9 +12,16 @@ const ListingSchema = new Schema({
     required: true,
   },
   image: {
-    type: String,
-    default: "https://unsplash.com/photos/a-stone-building-with-a-stone-wall-and-trees-around-it-dDFLiUgpdx0",
-    set: (v) => (v === "" ? "https://unsplash.com/photos/a-stone-building-with-a-stone-wall-and-trees-around-it-dDFLiUgpdx0" : v),
+    image: {
+      type: {
+        filename: String,
+        url: String,
+      },
+      default: {
+        filename: "listingimage",
+        url: "https://unsplash.com/photos/a-stone-building-with-a-stone-wall-and-trees-around-it-dDFLiUgpdx0",
+      },
+    },
   },
   price: {
     type: Number,
@@ -30,6 +37,6 @@ const ListingSchema = new Schema({
   },
 });
 
-const Listing = mongoose.model("Listing",ListingSchema);
+const Listing = mongoose.model("Listing", ListingSchema);
 
 module.exports = Listing;

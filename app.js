@@ -24,28 +24,19 @@ app.get("/", (req, res) => {
   res.send("Yess, working on root");
 });
 
-app.get("/Listings",async (req,res)=>{
+
+//Show route for all listings
+app.get("/listings",async (req,res)=>{
   const listings = await Listing.find({});
   res.render("listings.ejs",{listings});
 })
 
-app.get("/testlisting", async (req,res) => {
-  const sampleListing = new Listing({
-    title: "New Villa",
-    description: "By near Beach",
-    price: 1300,
-    location: "Dadar, Mumbai",
-    country: "India",
-  });
+app.get("/listings/:id",async (req,res)=>{
+  const {id} = req.params;
+  const listing = await Listing.findById(id);
+  res.render("show.ejs",{listing});
+})
 
-  await sampleListing
-    .save()
-    .then(() => {
-      console.log(sampleListing);
-    })
-    .catch((err) => console.log(err));
-  res.send("Yes! Saved in DB");
-});
 app.listen(8080, () => {
   console.log("It is live on port 8080");
 });

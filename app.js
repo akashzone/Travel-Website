@@ -6,6 +6,12 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static(path.join(__dirname, "public")));
+
+const methodOverride = require("method-override");
+app.use(methodOverride("_method"));
+
+
 const mongoose = require("mongoose");
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const Listing = require("./models/listing");
@@ -40,11 +46,24 @@ app.post("/listings",async (req,res)=>{
   res.redirect("/listings");
 });
 
+app.get("/listings/:id/edit",async (req,res)=>{
+  const {id} = req.params;
+  const listing = await Listing.findById(id);
+  res.render("edit.ejs",{listing});
+});
+
+app.put("/listings/:id",async (req,res)=>{
+  const {id} = req.params;
+  const listing = await Listing.findByIdAndUpdate(id,req.body.listing);
+  res.redirect(`/listings/${listing._id}`);
+});
+
 app.get("/listings/:id",async (req,res)=>{
   const {id} = req.params;
   const listing = await Listing.findById(id);
   res.render("show.ejs",{listing});
 })
+
 
 
 app.listen(8080, () => {

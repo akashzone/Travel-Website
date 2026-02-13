@@ -10,5 +10,9 @@
     <p><%= listing.description %></p>
     <p>Price: $<%= listing.price %></p>
     <p>Location: <%= listing.location %></p>
+
+    <form method="GET" action="/listings/<%= listing._id%>/edit">
+        <button type="submit">Edit the Listing</button>
+    </form>
 </body>
 </html>

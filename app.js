@@ -24,18 +24,28 @@ app.get("/", (req, res) => {
   res.send("Yess, working on root");
 });
 
-
 //Show route for all listings
 app.get("/listings",async (req,res)=>{
   const listings = await Listing.find({});
   res.render("listings.ejs",{listings});
 })
 
+app.get("/listings/new",(req,res)=>{
+  res.render("new.ejs");
+});
+ 
+app.post("/listings",async (req,res)=>{
+  const listing = new Listing(req.body.listing);
+  await listing.save();
+  res.redirect("/listings");
+});
+
 app.get("/listings/:id",async (req,res)=>{
   const {id} = req.params;
   const listing = await Listing.findById(id);
   res.render("show.ejs",{listing});
 })
+
 
 app.listen(8080, () => {
   console.log("It is live on port 8080");

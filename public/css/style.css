@@ -1,4 +1,8 @@
-
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
 
 .navbar {
     padding-top: 0.8rem;
@@ -48,4 +52,14 @@
     height: 20rem;
     border-radius: 15px !important;
     object-fit:cover;
+}
+
+.listing-link{
+    text-decoration: none;
+}
+
+.add-btn{
+    background-color: rgb(255, 89, 0) !important;
+    border: none !important;
+    border-radius: 4px solid trasparent;
 }

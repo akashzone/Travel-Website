@@ -63,3 +63,15 @@ body{
     border: none !important;
     border-radius: 4px solid trasparent;
 }
+
+.edit-btn{
+    background-color: rgb(255, 89, 0) !important;
+    border: none !important;
+    border-radius: 4px solid trasparent;
+}
+
+.delete-btn{
+    background-color: rgb(255, 89, 0) !important;
+    border: none !important;
+    border-radius: 4px solid trasparent;
+}

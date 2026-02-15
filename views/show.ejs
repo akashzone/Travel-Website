@@ -1,14 +1,40 @@
 <%- layout("./layouts/boilerplate") %>
-<body>
-    <h1><%= listing.title %></h1>
-    <p><%= listing.description %></p>
-    <p>Price: $<%= listing.price %></p>
-    <p>Location: <%= listing.location %></p>
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-8 mt-3 offset-2">
+                <form method="POST" action="/listings">
+                    <h1>
+                        <%= listing.title %>
+                    </h1>
+                    <div class="col">
+                        <label for="title" class="form-label">Title:</label>
+                        <input type="text" class="form-control" value="<%= listing.title %>" id="title"
+                            name="listing[title]" required>
 
-    <form method="GET" action="/listings/<%= listing._id%>/edit">
-        <button type="submit">Edit the Listing</button>
-    </form>
-    <form method="POST" action="/listings/<%= listing._id%>?_method=DELETE">
-        <button type="submit">Delete the Listing</button>
-    </form>
-</body>
+                        <label for="description" class="form-label">Description:</label>
+                        <textarea id="description" class="form-control" name="listing[description]"
+                            required><%= listing.description %></textarea>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="price" class="form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" value="<%= listing.price %>"
+                            name="listing[price]" required>
+                        <label for="location" class="form-label">Location:</label>
+                        <input type="text" class="form-control" value="<%= listing.country%>" id="location"
+                            name="listing[location]" required>
+                    </div>
+                    <label for="country" class="form-label">Country:</label>
+                    <input type="text" class="form-control mb-3" id="country" value="<%= listing.country %>"
+                        name="listing[country]" required>
+                </form>
+            </div>
+            <div class="row">
+                <form method="GET" action="/listings/<%= listing._id%>/edit">
+                    <button type="submit" class="btn btn-dark edit-btn offset-2">Edit</button>
+                </form>
+                <form method="POST" action="/listings/<%= listing._id%>?_method=DELETE">
+                    <button type="submit" class="btn btn-dark delete-btn offset-2 mt-1">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>

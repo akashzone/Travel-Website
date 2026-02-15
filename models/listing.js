@@ -12,15 +12,10 @@ const ListingSchema = new Schema({
     required: true,
   },
   image: {
-    image: {
-      type: {
-        filename: String,
-        url: String,
-      },
-      default: {
-        filename: "listingimage",
-        url: "https://unsplash.com/photos/a-stone-building-with-a-stone-wall-and-trees-around-it-dDFLiUgpdx0",
-      },
+    filename: String,
+    url: {
+      type: String,
+      default: "https://images.unsplash.com/photo-1505842465776-3ac8b0d2f2e3",
     },
   },
   price: {

@@ -24,6 +24,7 @@
 
 .fa-brands{
     font-size: 1.5rem;
+    color: rgb(37, 37, 37);
 }
 
 .privacy-terms a{
@@ -33,4 +34,18 @@
 
 .privacy-terms a:hover{
     text-decoration: underline;
+}
+
+
+.container{
+    margin-top: 15px;
+}
+.card {
+    border: none !important;
+}
+
+.card img {
+    height: 20rem;
+    border-radius: 15px !important;
+    object-fit:cover;
 }
